@@ -49,7 +49,7 @@ app.use("/api/social-links", require("./routes/socialLinks"));
 app.use("/api/legal", require("./routes/legalPages"));
 app.use("/api/content", require("./routes/content"));
 
-app.get("/", (req, res) => res.json({ status: "SuureshIndia API is running" }));
+app.get("/", (req, res) => res.json({ status: "ok", message: "SuureshIndia API is running" }));
 
 // Global error handler
 app.use((err, req, res, next) => {
@@ -60,8 +60,13 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 async function bootstrapAdmin() {
-  const adminEmail = process.env.ADMIN_EMAIL || "admin@suureshindia.com";
-  const adminPassword = process.env.ADMIN_PASSWORD || "Admin@1234";
+  const adminEmail = process.env.ADMIN_EMAIL;
+  const adminPassword = process.env.ADMIN_PASSWORD;
+
+  if (!adminEmail || !adminPassword) {
+    console.warn("Skipping admin bootstrap: ADMIN_EMAIL or ADMIN_PASSWORD not provided.");
+    return;
+  }
 
   const existing = await client.fetch(
     '*[_type == "adminUser" && email == $email][0]',
@@ -92,10 +97,8 @@ async function bootstrap() {
 
   startScheduler(60 * 60 * 1000);
 
-  app.listen(PORT, () => {
-    console.log(
-      `SuureshIndia Node API Server running on http://localhost:${PORT}`,
-    );
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
   });
 }
 
