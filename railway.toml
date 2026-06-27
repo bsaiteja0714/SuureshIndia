@@ -1,9 +1,0 @@
-[build]
-  buildCommand = "cd SuureshIndia/backend && npm install"
-
-[deploy]
-  startCommand = "cd SuureshIndia/backend && npm start"
-  healthcheckPath = "/"
-  healthcheckTimeout = 60
-  restartPolicyType = "on_failure"
-  restartPolicyMaxRetries = 3
