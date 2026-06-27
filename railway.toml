@@ -1,0 +1,5 @@
+[build]
+  buildCommand = "cd SuureshIndia/backend && npm install"
+
+[deploy]
+  startCommand = "cd SuureshIndia/backend && npm start"
