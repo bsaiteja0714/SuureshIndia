@@ -426,6 +426,7 @@ function ServiceDetail({ service }) {
               alignItems: "center",
               justifyContent: "space-between",
               gap: "1.5rem",
+              flexWrap: "wrap"
             }}
           >
             <div>
