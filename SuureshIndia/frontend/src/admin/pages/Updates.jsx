@@ -141,7 +141,7 @@ export default function UpdatesAdmin() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
           gap: "1rem",
           marginBottom: "1.5rem",
         }}

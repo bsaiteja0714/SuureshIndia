@@ -185,7 +185,7 @@ export default function ServicesAdmin() {
 
   return (
     <AdminLayout>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
         <div>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: "1.75rem", color: "var(--fg)", marginBottom: "4px" }}>
             Services Management
@@ -218,6 +218,7 @@ export default function ServicesAdmin() {
                 background: "var(--card-bg)", border: "1px solid var(--border)",
                 borderRadius: "var(--radius)", padding: "1.5rem 2rem",
                 display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1.5rem",
+                flexWrap: "wrap"
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "1.25rem", flex: 1, minWidth: 0 }}>
@@ -231,14 +232,14 @@ export default function ServicesAdmin() {
                   <p style={{ color: "var(--muted)", fontSize: "0.82rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     {svc.description}
                   </p>
-                  <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.5rem" }}>
+                  <div style={{ display: "flex", gap: "0.5rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
                     {tag(`${(svc.benefits || []).length} Benefits`)}
                     {tag(`${(svc.processFlow || svc.process || []).length} Steps`, "var(--muted)")}
                     {tag(`${(svc.faqs || svc.faq || []).length} FAQs`, "var(--muted)")}
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0 }}>
+              <div style={{ display: "flex", gap: "0.5rem", flexShrink: 0, flexWrap: "wrap" }}>
                 <button
                   onClick={() => openEdit(svc)}
                   style={{
